@@ -1,36 +1,26 @@
-
 {
-  
   "hosting": {
-    "public": "build",
-    "rewrites" : [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/build",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/public",
-        "destination": "/index.html"
-      }
-    ],
-    "destination": "/index.html",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "nextServer"
+      }
     ]
   },
-  "rewrites": [
-  {
-    "source": "**",
-    "destination": "/index.html"
-  }]
+  "functions": {
+    "source": ".",
+    "runtime": "nodejs14",
+    "ignore": [
+      ".firebase/**",
+      ".firebaserc",
+      "firebase.json",
+      "**/node_modules/**"
+    ]
+  }
 }
